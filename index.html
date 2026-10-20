@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <title>Chúc mừng Ngày Phụ nữ Việt Nam 20/10</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,500&family=Be+Vietnam+Pro:wght@300;400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Quicksand:wght@400;500;600&display=swap">
 <style>
 :root{
   --ruby:#9b1237;--ruby-d:#5a0a22;--rose:#ffd6e4;--blush:#ffb3cd;--gold:#ffd98a;--ink:#fff5f8;
@@ -13,9 +13,9 @@
 }
 @media (prefers-color-scheme:dark){:root{--ruby-d:#3d0617}}
 :root:not([data-theme="light"]){color-scheme:dark}
-*{box-sizing:border-box;margin:0}
+*{box-sizing:border-box;margin:0;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;-webkit-user-drag:none}
 html{height:100%;scroll-padding-top:env(safe-area-inset-top,0px)}
-body{min-height:100%;font-family:"Be Vietnam Pro",system-ui,sans-serif;color:var(--ink);
+body{min-height:100%;font-family:"Quicksand","Segoe UI",system-ui,sans-serif;color:var(--ink);cursor:default;
   background:radial-gradient(120% 90% at 50% 0%,#c2185b 0%,var(--ruby) 35%,var(--ruby-d) 100%) fixed;
   overflow-x:hidden;-webkit-tap-highlight-color:transparent}
 canvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none}
@@ -26,8 +26,8 @@ main{position:relative;z-index:1;display:flex;flex-direction:column;align-items:
   background:radial-gradient(circle,rgba(255,217,138,.40),transparent 65%);filter:blur(30px);z-index:0;pointer-events:none;
   animation:breathe 5s ease-in-out infinite}
 @keyframes breathe{50%{opacity:.55;transform:translateX(-50%) scale(1.12)}}
-.date{font-family:"Playfair Display",Georgia,serif;font-style:italic;font-size:clamp(18px,3vw,26px);color:var(--gold);letter-spacing:.08em}
-h1{font-family:"Playfair Display",Georgia,serif;font-weight:600;line-height:1.15;font-size:clamp(32px,7.5vw,76px);
+.date{font-family:"Dancing Script","Segoe Script",cursive;font-weight:600;font-size:clamp(26px,4.5vw,36px);color:var(--gold);letter-spacing:.04em}
+h1{font-family:"Dancing Script","Segoe Script",cursive;font-weight:700;line-height:1.2;font-size:clamp(44px,10vw,96px);
   min-height:2.4em;max-width:16ch;
   background:linear-gradient(100deg,#fff 0%,var(--blush) 25%,var(--gold) 50%,var(--blush) 75%,#fff 100%);background-size:250% 100%;
   -webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 6s linear infinite;
@@ -38,7 +38,7 @@ h1{font-family:"Playfair Display",Georgia,serif;font-weight:600;line-height:1.15
 .panel{width:min(640px,100%);padding:clamp(22px,4vw,36px);border-radius:28px;background:var(--glass);
   border:1px solid var(--glass-b);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
   box-shadow:0 10px 50px rgba(0,0,0,.28),inset 0 0 40px rgba(255,200,220,.08);
-  font-size:clamp(15px,2.2vw,18px);line-height:1.8;font-weight:300}
+  font-size:clamp(16px,2.3vw,19px);line-height:1.85;font-weight:500}
 .panel p+p{margin-top:14px}
 .hint{font-size:14px;color:var(--blush);opacity:.85}
 /* flip card */
@@ -50,9 +50,9 @@ h1{font-family:"Playfair Display",Georgia,serif;font-weight:600;line-height:1.15
   display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:22px;
   border:1px solid var(--glass-b);box-shadow:0 0 36px rgba(255,200,130,.3)}
 .front{background:linear-gradient(135deg,#ff8fb3,#d81b60 60%,#8e0e3a)}
-.front .big{font-family:"Playfair Display",Georgia,serif;font-size:34px}
+.front .big{font-family:"Dancing Script","Segoe Script",cursive;font-weight:700;font-size:44px}
 .back{transform:rotateY(180deg);background:linear-gradient(135deg,#fff0f5,#ffd6e4);color:var(--ruby-d);
-  font-family:"Playfair Display",Georgia,serif;font-style:italic;font-size:clamp(16px,4.2vw,20px);line-height:1.6}
+  font-family:"Dancing Script","Segoe Script",cursive;font-weight:600;font-size:clamp(19px,4.8vw,23px);line-height:1.5}
 /* gift */
 .gift{position:relative;width:120px;height:120px;background:none;border:0;cursor:pointer;color:inherit;animation:bob 2.4s ease-in-out infinite}
 @keyframes bob{50%{transform:translateY(-8px)}}
@@ -79,20 +79,20 @@ footer{font-size:13px;color:var(--blush);opacity:.8}
   <div class="date">20 tháng 10</div>
   <h1 id="title" class="caret" aria-label="Chúc mừng Ngày Phụ nữ Việt Nam"></h1>
   <section class="panel">
-    <p>Gửi đến mẹ, chị, em, bạn và tất cả những người phụ nữ tuyệt vời quanh ta.</p>
-    <p>Cảm ơn vì những hy sinh thầm lặng, những nụ cười dịu dàng và sức mạnh kiên cường đã làm cho cuộc sống này thêm ấm áp. Chúc mỗi người luôn mạnh khỏe, bình an, được yêu thương và tự do tỏa sáng theo cách riêng của mình.</p>
+    <p>Gửi lời đến những đoá hoa hồng</p>
+    <p>Chúc toàn thể những bông hồng có một ngày 20/10 trọn vẹn. Mỗi sáng mai thức dậy luôn tràn đầy niềm vui và kiếm thật nhiều tiền nhó!</p>
   </section>
   <p class="hint">Chạm vào tấm thiệp để lật mở</p>
   <button class="scene" id="scene" aria-label="Lật thiệp chúc mừng">
     <div class="card">
       <div class="face front"><span style="font-size:42px">🌹</span><span class="big">Dành tặng bạn</span></div>
-      <div class="face back">“Bạn xứng đáng với mọi điều đẹp đẽ nhất. Chúc bạn một ngày 20/10 thật rạng rỡ và ngập tràn yêu thương.”</div>
+      <div class="face back">“Bạn xứng đáng với mọi điều đẹp đẽ nhất. Chúc bạn một ngày 20/10 thật rạng rỡ và ngập tràn yêu thương!”</div>
     </div>
   </button>
   <p class="hint">Và một món quà nhỏ đang chờ bạn</p>
   <button class="gift" id="gift" aria-label="Mở hộp quà"><span class="box"></span><span class="lid"></span><span class="rib"></span></button>
   <section class="panel" id="surprise" aria-live="polite">
-    <p style="font-family:'Playfair Display',Georgia,serif;font-size:1.25em;color:var(--gold)">Bất ngờ dành cho bạn</p>
+    <p style="font-family:'Dancing Script','Segoe Script',cursive;font-weight:700;font-size:2em;color:var(--gold)">Bất ngờ dành cho bạn</p>
     <p>Mong rằng mỗi sớm mai bạn thức dậy đều thấy lòng nhẹ nhàng, mỗi ước mơ bạn ấp ủ đều có ngày nở hoa. Hôm nay, hãy để người khác chăm sóc bạn một chút nhé.</p>
   </section>
   <footer>Chúc mừng Ngày Phụ nữ Việt Nam 20/10</footer>
@@ -103,6 +103,8 @@ footer{font-size:13px;color:var(--blush);opacity:.8}
 <script>
 (()=>{
 const $=id=>document.getElementById(id);
+['selectstart','contextmenu','copy','cut','dragstart'].forEach(ev=>document.addEventListener(ev,e=>e.preventDefault()));
+document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&['a','c','x','s','u','p'].includes(e.key.toLowerCase()))e.preventDefault()});
 const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
 const dpr=Math.min(devicePixelRatio||1,2);
 const A=$('fx'),B=$('fx2'),a=A.getContext('2d'),b=B.getContext('2d');
