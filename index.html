@@ -2,215 +2,222 @@
 <html lang="vi">
 <head>
 <meta charset="utf-8">
-<title>Chúc mừng Ngày Phụ nữ Việt Nam 20/10</title>
+<title>Đếm ngược ngày lễ Việt Nam và quốc tế</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Quicksand:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700;800&display=swap">
 <style>
-:root{
-  --ruby:#9b1237;--ruby-d:#5a0a22;--rose:#ffd6e4;--blush:#ffb3cd;--gold:#ffd98a;--ink:#fff5f8;
-  --glass:rgba(255,255,255,.10);--glass-b:rgba(255,230,200,.35);
-  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
-}
-@media (prefers-color-scheme:dark){:root{--ruby-d:#3d0617}}
-:root:not([data-theme="light"]){color-scheme:dark}
-*{box-sizing:border-box;margin:0;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;-webkit-user-drag:none}
+:root{--bg:#fff6f1;--card:#fff;--ink:#3a0f1c;--mut:#8a6470;--accent:#c4163f;--gold:#b7791f;--line:rgba(120,30,50,.14);--hero1:#c4163f;--hero2:#7a0f2b;--shadow:0 8px 28px rgba(120,20,45,.12);
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#17090f;--card:#261119;--ink:#fff1ec;--mut:#c79aa7;--accent:#ff6685;--gold:#ffd98a;--line:rgba(255,200,210,.14);--hero1:#b3123a;--hero2:#4a0a1f;--shadow:0 8px 28px rgba(0,0,0,.4)}}
+:root[data-theme="dark"]{--bg:#17090f;--card:#261119;--ink:#fff1ec;--mut:#c79aa7;--accent:#ff6685;--gold:#ffd98a;--line:rgba(255,200,210,.14);--hero1:#b3123a;--hero2:#4a0a1f;--shadow:0 8px 28px rgba(0,0,0,.4)}
+*{box-sizing:border-box;margin:0}
+[hidden]{display:none!important}
 html{height:100%;scroll-padding-top:env(safe-area-inset-top,0px)}
-body{min-height:100%;font-family:"Quicksand","Segoe UI",system-ui,sans-serif;color:var(--ink);cursor:default;
-  background:radial-gradient(120% 90% at 50% 0%,#c2185b 0%,var(--ruby) 35%,var(--ruby-d) 100%) fixed;
-  overflow-x:hidden;-webkit-tap-highlight-color:transparent}
-canvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none}
-#fx{z-index:0}#fx2{z-index:3}
-main{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:28px;
-  padding:clamp(28px,7vh,64px) 18px 90px;text-align:center}
-.glow{position:fixed;left:50%;top:18%;width:min(70vw,520px);aspect-ratio:1;transform:translateX(-50%);
-  background:radial-gradient(circle,rgba(255,217,138,.40),transparent 65%);filter:blur(30px);z-index:0;pointer-events:none;
-  animation:breathe 5s ease-in-out infinite}
-@keyframes breathe{50%{opacity:.55;transform:translateX(-50%) scale(1.12)}}
-.date{font-family:"Dancing Script","Segoe Script",cursive;font-weight:600;font-size:clamp(26px,4.5vw,36px);color:var(--gold);letter-spacing:.04em}
-h1{font-family:"Dancing Script","Segoe Script",cursive;font-weight:700;line-height:1.2;font-size:clamp(44px,10vw,96px);
-  min-height:2.4em;max-width:16ch;
-  background:linear-gradient(100deg,#fff 0%,var(--blush) 25%,var(--gold) 50%,var(--blush) 75%,#fff 100%);background-size:250% 100%;
-  -webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 6s linear infinite;
-  filter:drop-shadow(0 0 18px rgba(255,200,140,.45))}
-@keyframes shine{to{background-position:-250% 0}}
-.caret::after{content:"";display:inline-block;width:3px;height:.9em;margin-left:4px;background:var(--gold);vertical-align:-.08em;animation:blink .8s steps(1) infinite}
-@keyframes blink{50%{opacity:0}}
-.panel{width:min(640px,100%);padding:clamp(22px,4vw,36px);border-radius:28px;background:var(--glass);
-  border:1px solid var(--glass-b);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
-  box-shadow:0 10px 50px rgba(0,0,0,.28),inset 0 0 40px rgba(255,200,220,.08);
-  font-size:clamp(16px,2.3vw,19px);line-height:1.85;font-weight:500}
-.panel p+p{margin-top:14px}
-.hint{font-size:14px;color:var(--blush);opacity:.85}
-/* flip card */
-.scene{perspective:1200px;width:min(360px,88vw);height:230px;cursor:pointer;background:none;border:0;padding:0;color:inherit;font:inherit}
-.scene:focus-visible,.btn:focus-visible,.gift:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
-.card{position:relative;width:100%;height:100%;transition:transform .9s cubic-bezier(.2,.8,.2,1);transform-style:preserve-3d}
-.scene.open .card{transform:rotateY(180deg)}
-.face{position:absolute;inset:0;border-radius:24px;backface-visibility:hidden;-webkit-backface-visibility:hidden;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:22px;
-  border:1px solid var(--glass-b);box-shadow:0 0 36px rgba(255,200,130,.3)}
-.front{background:linear-gradient(135deg,#ff8fb3,#d81b60 60%,#8e0e3a)}
-.front .big{font-family:"Dancing Script","Segoe Script",cursive;font-weight:700;font-size:44px}
-.back{transform:rotateY(180deg);background:linear-gradient(135deg,#fff0f5,#ffd6e4);color:var(--ruby-d);
-  font-family:"Dancing Script","Segoe Script",cursive;font-weight:600;font-size:clamp(19px,4.8vw,23px);line-height:1.5}
-/* gift */
-.gift{position:relative;width:120px;height:120px;background:none;border:0;cursor:pointer;color:inherit;animation:bob 2.4s ease-in-out infinite}
-@keyframes bob{50%{transform:translateY(-8px)}}
-.gift .box{position:absolute;left:10px;right:10px;bottom:0;height:70px;border-radius:8px;background:linear-gradient(#e91e63,#ad1457)}
-.gift .lid{position:absolute;left:4px;right:4px;bottom:62px;height:26px;border-radius:8px;background:linear-gradient(#ff5c93,#d81b60);transition:transform .6s cubic-bezier(.3,1.6,.5,1);transform-origin:left bottom}
-.gift .rib{position:absolute;left:50%;bottom:0;width:18px;height:88px;margin-left:-9px;background:linear-gradient(90deg,#ffc863,#ffe9a8,#ffc863);z-index:2}
-.gift::before,.gift::after{content:"";position:absolute;bottom:86px;width:28px;height:22px;border:5px solid #ffd98a;border-radius:50% 50% 0 50%;z-index:2}
-.gift::before{left:26px;transform:rotate(-20deg)}.gift::after{right:26px;transform:scaleX(-1) rotate(-20deg)}
-.gift.open{animation:none}.gift.open .lid{transform:translate(-8px,-34px) rotate(-24deg)}
-#surprise{opacity:0;max-height:0;overflow:hidden;transition:opacity .8s,max-height .8s}
-#surprise.show{opacity:1;max-height:420px}
-.btn{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:max(16px,env(safe-area-inset-bottom,0px));z-index:5;
-  width:52px;height:52px;border-radius:50%;border:1px solid var(--glass-b);background:var(--glass);color:var(--ink);
-  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);font-size:22px;cursor:pointer;box-shadow:0 0 22px rgba(255,200,130,.35)}
-.btn.on{background:rgba(255,217,138,.3)}
-footer{font-size:13px;color:var(--blush);opacity:.8}
-@media (prefers-reduced-motion:reduce){*{animation-duration:.01s!important;animation-iteration-count:1!important;transition-duration:.01s!important}}
+body{min-height:100%;background:var(--bg);color:var(--ink);font-family:"Be Vietnam Pro","Segoe UI",system-ui,sans-serif;-webkit-tap-highlight-color:transparent}
+main{max-width:1060px;margin:0 auto;padding:28px 16px 56px}
+h1{font-size:clamp(26px,5vw,40px);font-weight:800;letter-spacing:-.02em;text-align:center}
+h1 span{color:var(--accent)}
+.sub{text-align:center;color:var(--mut);margin:6px 0 22px;font-size:15px}
+.hero{position:relative;overflow:hidden;border-radius:28px;padding:clamp(22px,5vw,40px);color:#fff;text-align:center;background:radial-gradient(120% 140% at 10% 0%,var(--hero1),var(--hero2));box-shadow:var(--shadow)}
+.hero::after{content:"";position:absolute;width:340px;height:340px;right:-90px;top:-120px;border-radius:50%;background:radial-gradient(circle,rgba(255,217,138,.35),transparent 65%);pointer-events:none}
+.hero .lbl{font-size:13px;letter-spacing:.14em;text-transform:uppercase;opacity:.85}
+.hero .em{font-size:clamp(46px,10vw,72px);line-height:1.2;margin-top:6px}
+.hero h2{font-size:clamp(22px,4.5vw,34px);font-weight:800;margin-top:2px}
+.hero .dt{opacity:.9;font-size:15px;margin-top:4px}
+.units{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(8px,2vw,16px);max-width:520px;margin:22px auto 0;position:relative;z-index:1}
+.u{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);border-radius:18px;padding:12px 4px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.u b{display:block;font-size:clamp(26px,7vw,42px);font-weight:800;font-variant-numeric:tabular-nums;line-height:1.1}
+.u i{font-style:normal;font-size:12px;opacity:.85}
+.today{font-size:clamp(24px,6vw,38px);font-weight:800;margin-top:18px;color:#ffe3a3}
+.tabs{display:flex;gap:8px;overflow-x:auto;padding:22px 2px 12px;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex:none;border:1px solid var(--line);background:var(--card);color:var(--ink);padding:9px 16px;border-radius:99px;font:600 14px inherit;font-family:inherit;cursor:pointer}
+.tab[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+.tab:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.c{display:flex;gap:14px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:14px 16px;box-shadow:var(--shadow);transition:transform .2s}
+.c:hover{transform:translateY(-3px)}
+.c .e{font-size:34px;flex:none;width:52px;height:52px;display:grid;place-items:center;border-radius:16px;background:var(--bg)}
+.c .t{min-width:0;flex:1}
+.c h3{font-size:15px;font-weight:700;line-height:1.3}
+.c p{font-size:12.5px;color:var(--mut);margin-top:2px}
+.c .n{flex:none;text-align:center;min-width:54px}
+.c .n b{display:block;font-size:24px;font-weight:800;color:var(--accent);font-variant-numeric:tabular-nums;line-height:1}
+.c .n span{font-size:11px;color:var(--mut)}
+.c.now{border-color:var(--gold);box-shadow:0 0 0 2px var(--gold),var(--shadow)}
+.tag{display:inline-block;font-size:10.5px;font-weight:700;padding:2px 8px;border-radius:99px;margin-top:5px;background:var(--bg);color:var(--gold)}
+.tag.off{color:#fff;background:var(--accent)}
+.tag.int{color:var(--accent)}
+.note{margin-top:28px;text-align:center;font-size:12.5px;color:var(--mut);line-height:1.7}
+.sh{flex:none;border:1px solid var(--line);background:var(--bg);color:var(--ink);width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:15px}
+.sh:focus-visible,.hshare:focus-visible,.mr button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.hshare{position:relative;z-index:1;margin-top:20px;border:1px solid rgba(255,255,255,.4);background:rgba(255,255,255,.16);color:#fff;font:600 14px "Be Vietnam Pro",sans-serif;padding:10px 20px;border-radius:99px;cursor:pointer}
+.md{position:fixed;inset:0;z-index:20;background:rgba(10,0,5,.72);display:grid;place-items:center;padding:16px;padding-top:max(16px,env(safe-area-inset-top,0px));padding-bottom:max(16px,env(safe-area-inset-bottom,0px))}
+.mb{background:var(--card);border-radius:24px;padding:14px;max-width:420px;width:100%;max-height:100%;overflow:auto;text-align:center}
+.mb img{width:100%;border-radius:16px;display:block}
+.mb p{font-size:12.5px;color:var(--mut);margin:10px 0}
+.mr{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.mr button{border:1px solid var(--line);background:var(--bg);color:var(--ink);font:600 14px "Be Vietnam Pro",sans-serif;padding:9px 16px;border-radius:99px;cursor:pointer}
+.mr #msh{background:var(--accent);color:#fff;border-color:var(--accent)}
+@media (max-width:420px){.u i{font-size:11px}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
 <body>
-<canvas id="fx" aria-hidden="true"></canvas>
-<div class="glow"></div>
 <main>
-  <div class="date">20 tháng 10</div>
-  <h1 id="title" class="caret" aria-label="Chúc mừng Ngày Phụ nữ Việt Nam"></h1>
-  <section class="panel">
-    <p>Gửi lời đến những đoá hoa hồng</p>
-    <p>Chúc toàn thể những bông hồng có một ngày 20/10 trọn vẹn. Mỗi sáng mai thức dậy luôn tràn đầy niềm vui và kiếm thật nhiều tiền nhó!</p>
-  </section>
-  <p class="hint">Chạm vào tấm thiệp để lật mở</p>
-  <button class="scene" id="scene" aria-label="Lật thiệp chúc mừng">
-    <div class="card">
-      <div class="face front"><span style="font-size:42px">🌹</span><span class="big">Dành tặng bạn</span></div>
-      <div class="face back">“Bạn xứng đáng với mọi điều đẹp đẽ nhất. Chúc bạn một ngày 20/10 thật rạng rỡ và ngập tràn yêu thương!”</div>
+  <h1>Đếm ngược <span>ngày lễ</span></h1>
+  <p class="sub">Lễ Việt Nam và các ngày lễ quốc tế được đón mừng tại Việt Nam</p>
+  <section class="hero" aria-live="off">
+    <div class="lbl" id="lbl">Sắp tới</div>
+    <div class="em" id="em"></div>
+    <h2 id="nm"></h2>
+    <div class="dt" id="dt"></div>
+    <div class="units" id="units">
+      <div class="u"><b id="d">0</b><i>ngày</i></div>
+      <div class="u"><b id="h">0</b><i>giờ</i></div>
+      <div class="u"><b id="m">0</b><i>phút</i></div>
+      <div class="u"><b id="s">0</b><i>giây</i></div>
     </div>
-  </button>
-  <p class="hint">Và một món quà nhỏ đang chờ bạn</p>
-  <button class="gift" id="gift" aria-label="Mở hộp quà"><span class="box"></span><span class="lid"></span><span class="rib"></span></button>
-  <section class="panel" id="surprise" aria-live="polite">
-    <p style="font-family:'Dancing Script','Segoe Script',cursive;font-weight:700;font-size:2em;color:var(--gold)">Bất ngờ dành cho bạn</p>
-    <p>Mong rằng mỗi sớm mai bạn thức dậy đều thấy lòng nhẹ nhàng, mỗi ước mơ bạn ấp ủ đều có ngày nở hoa. Hôm nay, hãy để người khác chăm sóc bạn một chút nhé.</p>
+    <div class="today" id="today" hidden>Hôm nay là ngày lễ!</div>
+    <button class="hshare" id="hshare">📤 Chia sẻ ảnh đếm ngược</button>
   </section>
-  <footer>Chúc mừng Ngày Phụ nữ Việt Nam 20/10</footer>
+  <div class="tabs" id="tabs" role="group" aria-label="Lọc ngày lễ">
+    <button class="tab" data-f="all" aria-pressed="true">Tất cả</button>
+    <button class="tab" data-f="off" aria-pressed="false">Nghỉ lễ chính thức</button>
+    <button class="tab" data-f="vn" aria-pressed="false">Ngày lễ Việt Nam</button>
+    <button class="tab" data-f="int" aria-pressed="false">Quốc tế</button>
+  </div>
+  <div class="grid" id="grid"></div>
+  <p class="note">Ngày âm lịch được quy đổi theo múi giờ GMT+7. Lịch nghỉ lễ thực tế (nghỉ bù, nghỉ nối) do Chính phủ công bố hằng năm, bạn nhớ đối chiếu thông báo chính thức.</p>
 </main>
-<canvas id="fx2" aria-hidden="true"></canvas>
-<button class="btn" id="music" aria-label="Bật nhạc nền" aria-pressed="false">♪</button>
-
+<div class="md" id="md" hidden role="dialog" aria-label="Ảnh đếm ngược"><div class="mb"><img id="mi" alt="Ảnh đếm ngược ngày lễ"><p>Nhấn giữ ảnh để lưu, hoặc dùng các nút bên dưới</p><input type="file" id="bgf" accept="image/*" hidden><div class="mr"><button id="mbg">Đổi ảnh nền</button><button id="mrs" hidden>Ảnh mặc định</button><button id="msh">Chia sẻ</button><button id="mdl">Tải ảnh</button><button id="mcl">Đóng</button></div></div></div>
 <script>
 (()=>{
-const $=id=>document.getElementById(id);
-['selectstart','contextmenu','copy','cut','dragstart'].forEach(ev=>document.addEventListener(ev,e=>e.preventDefault()));
-document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&['a','c','x','s','u','p'].includes(e.key.toLowerCase()))e.preventDefault()});
-const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
-const dpr=Math.min(devicePixelRatio||1,2);
-const A=$('fx'),B=$('fx2'),a=A.getContext('2d'),b=B.getContext('2d');
-let W=0,H=0;
-function size(){W=innerWidth;H=innerHeight;for(const c of[A,B]){c.width=W*dpr;c.height=H*dpr}a.setTransform(dpr,0,0,dpr,0,0);b.setTransform(dpr,0,0,dpr,0,0)}
-addEventListener('resize',size);size();
+const PI=Math.PI;
+function jdFromDate(dd,mm,yy){const a=Math.floor((14-mm)/12),y=yy+4800-a,m=mm+12*a-3;return dd+Math.floor((153*m+2)/5)+365*y+Math.floor(y/4)-Math.floor(y/100)+Math.floor(y/400)-32045}
+function jdToDate(jd){const a=jd+32044,b=Math.floor((4*a+3)/146097),c=a-Math.floor(b*146097/4),d=Math.floor((4*c+3)/1461),e=c-Math.floor(1461*d/4),m=Math.floor((5*e+2)/153);return[e-Math.floor((153*m+2)/5)+1,m+3-12*Math.floor(m/10),b*100+d-4800+Math.floor(m/10)]}
+function newMoon(k){const T=k/1236.85,T2=T*T,T3=T2*T,r=PI/180;let J=2415020.75933+29.53058868*k+.0001178*T2-.000000155*T3;J+=.00033*Math.sin((166.56+132.87*T-.009173*T2)*r);const M=359.2242+29.10535608*k-.0000333*T2-.00000347*T3,P=306.0253+385.81691806*k+.0107306*T2+.00001236*T3,F=21.2964+390.67050646*k-.0016528*T2-.00000239*T3;const C=(.1734-.000393*T)*Math.sin(M*r)+.0021*Math.sin(2*r*M)-.4068*Math.sin(P*r)+.0161*Math.sin(r*2*P)-.0004*Math.sin(r*3*P)+.0104*Math.sin(r*2*F)-.0051*Math.sin(r*(M+P))-.0074*Math.sin(r*(M-P))+.0004*Math.sin(r*(2*F+M))-.0004*Math.sin(r*(2*F-M))-.0006*Math.sin(r*(2*F+P))+.001*Math.sin(r*(2*F-P))+.0005*Math.sin(r*(2*P+M));const dt=T<-11?.001+.000839*T+.0002261*T2-.00000845*T3-.000000081*T*T3:-.000278+.000265*T+.000262*T2;return J+C-dt}
+function sunLong(jd){const T=(jd-2451545)/36525,T2=T*T,r=PI/180,M=357.5291+35999.0503*T-.0001559*T2-.00000048*T*T2,L0=280.46645+36000.76983*T+.0003032*T2,DL=(1.9146-.004817*T-.000014*T2)*Math.sin(r*M)+(.019993-.000101*T)*Math.sin(r*2*M)+.00029*Math.sin(r*3*M);let L=(L0+DL)*r;return L-PI*2*Math.floor(L/(PI*2))}
+const sl=d=>Math.floor(sunLong(d-.5-7/24)/PI*6),nmd=k=>Math.floor(newMoon(k)+.5+7/24);
+function m11(y){const k=Math.floor((jdFromDate(31,12,y)-2415021)/29.530588853);let n=nmd(k);if(sl(n)>=9)n=nmd(k-1);return n}
+function leapOff(a){const k=Math.floor((a-2415021.076998695)/29.530588853+.5);let last,i=1,arc=sl(nmd(k+i));do{last=arc;i++;arc=sl(nmd(k+i))}while(arc!=last&&i<14);return i-1}
+function l2s(ld,lm,ly){let a,b;if(lm<11){a=m11(ly-1);b=m11(ly)}else{a=m11(ly);b=m11(ly+1)}const k=Math.floor(.5+(a-2415021.076998695)/29.530588853);let off=lm-11;if(off<0)off+=12;if(b-a>365&&off>=leapOff(a))off++;return jdToDate(nmd(k+off)+ld-1)}
 
-/* typing */
-const t=$('title'),txt='Chúc mừng Ngày Phụ nữ Việt Nam';let i=0;
-(function type(){t.textContent=txt.slice(0,++i);if(i<txt.length)setTimeout(type,85)})();
-if(reduce){t.textContent=txt}
+const nth=(m,wd,n)=>y=>{const f=new Date(y,m,1);return new Date(y,m,1+(wd-f.getDay()+7)%7+7*(n-1))};
+/* t: off = nghỉ lễ chính thức, vn = ngày lễ Việt Nam, int = quốc tế; d = dương lịch [ngày,tháng], l = âm lịch [ngày,tháng], f = hàm tính */
+const H=[
+['Tết Dương lịch','🎆','off',{d:[1,1]}],
+['Tết Nguyên Đán (mùng 1)','🧧','off',{l:[1,1]}],
+['Giỗ Tổ Hùng Vương','🏯','off',{l:[10,3]}],
+['Ngày Giải phóng miền Nam','🇻🇳','off',{d:[30,4]}],
+['Quốc tế Lao động','🛠️','off',{d:[1,5]}],
+['Quốc khánh','🇻🇳','off',{d:[2,9]}],
+['Rằm tháng Giêng','🏮','vn',{l:[15,1]}],
+['Ngày Thầy thuốc Việt Nam','🩺','vn',{d:[27,2]}],
+['Ngày thành lập Đoàn TNCS','🚩','vn',{d:[26,3]}],
+['Tết Hàn Thực','🍡','vn',{l:[3,3]}],
+['Ngày Sách và Văn hóa đọc','📚','vn',{d:[21,4]}],
+['Tết Đoan Ngọ','🍑','vn',{l:[5,5]}],
+['Ngày Gia đình Việt Nam','🏡','vn',{d:[28,6]}],
+['Ngày Thương binh Liệt sĩ','🕯️','vn',{d:[27,7]}],
+['Lễ Vu Lan','🪷','vn',{l:[15,7]}],
+['Tết Trung Thu','🥮','vn',{l:[15,8]}],
+['Ngày Giải phóng Thủ đô','🏙️','vn',{d:[10,10]}],
+['Ngày Doanh nhân Việt Nam','💼','vn',{d:[13,10]}],
+['Ngày Phụ nữ Việt Nam','🌹','vn',{d:[20,10]}],
+['Ngày Nhà giáo Việt Nam','🍎','vn',{d:[20,11]}],
+['Ngày thành lập Quân đội Nhân dân','🎖️','vn',{d:[22,12]}],
+['Ông Công Ông Táo','🐟','vn',{l:[23,12]}],
+['Lễ Tình nhân (Valentine)','💝','int',{d:[14,2]}],
+['Quốc tế Phụ nữ','🌷','int',{d:[8,3]}],
+['Cá tháng Tư','🤡','int',{d:[1,4]}],
+['Ngày Trái Đất','🌍','int',{d:[22,4]}],
+['Ngày của Mẹ','💐','int',{f:nth(4,0,2)}],
+['Quốc tế Thiếu nhi','🎈','int',{d:[1,6]}],
+['Ngày của Cha','👔','int',{f:nth(5,0,3)}],
+['Halloween','🎃','int',{d:[31,10]}],
+['Ngày Độc thân 11/11','🛍️','int',{d:[11,11]}],
+['Quốc tế Nam giới','🧔','int',{d:[19,11]}],
+['Black Friday','🏷️','int',{f:nth(10,5,4)}],
+['Giáng sinh','🎄','int',{d:[25,12]}],
+['Đêm Giao thừa dương lịch','🥂','int',{d:[31,12]}]
+];
+const DOW=['Chủ nhật','Thứ hai','Thứ ba','Thứ tư','Thứ năm','Thứ sáu','Thứ bảy'];
+const $=id=>document.getElementById(id),p2=n=>String(n).padStart(2,'0');
+const occ=(o,y)=>{if(o.l){const r=l2s(o.l[0],o.l[1],y);return new Date(r[2],r[1]-1,r[0])}return o.f?o.f(y):new Date(y,o.d[1]-1,o.d[0])};
+let filter='all',list=[],dayKey='';
 
-const cols=['#ff4d8d','#ffd98a','#ff9ec4','#ff6b6b','#fff1b8','#ff7ad9','#ffb347'];
-const rnd=(x,y)=>x+Math.random()*(y-x);
-const MAXP=700;
-let parts=[],rockets=[],petals=[],stars=[],hearts=[];
-
-/* stars (fixed set) */
-const NS=W<600?45:80;
-for(let k=0;k<NS;k++)stars.push({x:Math.random(),y:Math.random(),r:rnd(.6,2),p:rnd(0,6.28),s:rnd(.5,1.8)});
-/* petals */
-const NP=W<600?16:30;
-function petal(top){return{x:rnd(0,W),y:top?rnd(-H,0):rnd(0,H),s:rnd(8,16),vy:rnd(.5,1.4),vx:rnd(-.3,.3),r:rnd(0,6.28),vr:rnd(-.02,.02),w:rnd(0,6.28),c:Math.random()<.5?'#e91e63':'#ff8fb3'}}
-for(let k=0;k<NP;k++)petals.push(petal(false));
-
-function launch(x,y){rockets.push({x:x??rnd(.15,.85)*W,y:H,ty:y??rnd(.12,.45)*H,vy:-rnd(7,10),c:cols[(Math.random()*cols.length)|0]})}
-function burst(x,y,c){
-  const n=W<600?34:56,c2=cols[(Math.random()*cols.length)|0];
-  for(let k=0;k<n&&parts.length<MAXP;k++){const an=k/n*6.283+rnd(-.05,.05),sp=rnd(1.5,5.2);
-    parts.push({x,y,vx:Math.cos(an)*sp,vy:Math.sin(an)*sp,l:1,d:rnd(.009,.017),c:k%3?c:c2})}
+function build(now){
+  const t0=new Date(now.getFullYear(),now.getMonth(),now.getDate());
+  list=H.map(([n,e,t,o])=>{let best=null;for(let y=t0.getFullYear()-1;y<=t0.getFullYear()+1;y++){const d=occ(o,y);if(d>=t0&&(!best||d<best))best=d}
+    return{n,e,t,o,date:best,days:Math.round((best-t0)/864e5)}}).sort((a,b)=>a.date-b.date);
+  dayKey=t0.toDateString();render();
 }
-function heart(x,y){hearts.push({x,y,vx:rnd(-.8,.8),vy:-rnd(1.2,2.6),s:rnd(14,26),l:1,c:cols[(Math.random()*3)|0]})}
-function drawHeart(g,x,y,s){g.beginPath();g.moveTo(x,y+s*.3);g.bezierCurveTo(x,y,x-s*.5,y,x-s*.5,y+s*.3);g.bezierCurveTo(x-s*.5,y+s*.6,x,y+s*.8,x,y+s);g.bezierCurveTo(x,y+s*.8,x+s*.5,y+s*.6,x+s*.5,y+s*.3);g.bezierCurveTo(x+s*.5,y,x,y,x,y+s*.3);g.fill()}
-
-let last=0,acc=0,tm=0,paused=false;
-function frame(now){
-  requestAnimationFrame(frame);
-  if(paused)return;
-  const dt=Math.min((now-last)/16.67||1,3);last=now;tm+=dt;
-  /* background layer */
-  a.clearRect(0,0,W,H);
-  a.globalCompositeOperation='lighter';
-  for(const s of stars){const o=.35+.65*Math.abs(Math.sin(tm*.02*s.s+s.p));a.globalAlpha=o;a.fillStyle='#ffe9b8';a.beginPath();a.arc(s.x*W,s.y*H,s.r,0,6.283);a.fill()}
-  a.globalAlpha=1;
-  /* fireworks */
-  if(!reduce){acc+=dt;if(acc>70){acc=0;if(rockets.length<4)launch()}}
-  for(let k=rockets.length-1;k>=0;k--){const r=rockets[k];r.y+=r.vy*dt;r.vy+=.06*dt;
-    a.fillStyle=r.c;a.fillRect(r.x-1.5,r.y,3,10);
-    if(r.vy>-1.2||r.y<=r.ty){burst(r.x,r.y,r.c);rockets.splice(k,1)}}
-  for(let k=parts.length-1;k>=0;k--){const p=parts[k];p.x+=p.vx*dt;p.y+=p.vy*dt;p.vy+=.045*dt;p.vx*=.992;p.l-=p.d*dt;
-    if(p.l<=0){parts[k]=parts[parts.length-1];parts.pop();continue}
-    a.globalAlpha=p.l;a.fillStyle=p.c;a.beginPath();a.arc(p.x,p.y,2.2*p.l+.4,0,6.283);a.fill()}
-  a.globalAlpha=1;a.globalCompositeOperation='source-over';
-  /* petals */
-  for(let k=0;k<petals.length;k++){const p=petals[k];p.y+=p.vy*dt;p.w+=.02*dt;p.x+=(p.vx+Math.sin(p.w)*.6)*dt;p.r+=p.vr*dt;
-    if(p.y>H+20){petals[k]=petal(true);continue}
-    a.save();a.translate(p.x,p.y);a.rotate(p.r);a.scale(1,.6+.4*Math.sin(p.w));a.fillStyle=p.c;a.globalAlpha=.8;
-    a.beginPath();a.moveTo(0,-p.s);a.quadraticCurveTo(p.s,-p.s*.2,0,p.s);a.quadraticCurveTo(-p.s,-p.s*.2,0,-p.s);a.fill();a.restore()}
-  a.globalAlpha=1;
-  /* hearts layer */
-  b.clearRect(0,0,W,H);
-  for(let k=hearts.length-1;k>=0;k--){const h=hearts[k];h.x+=h.vx*dt;h.y+=h.vy*dt;h.l-=.012*dt;
-    if(h.l<=0){hearts.splice(k,1);continue}
-    b.globalAlpha=h.l;b.fillStyle=h.c;b.shadowColor=h.c;b.shadowBlur=14;drawHeart(b,h.x,h.y,h.s)}
-  b.shadowBlur=0;b.globalAlpha=1;
+function render(){
+  const v=list.filter(h=>filter==='all'||h.t===filter);
+  $('grid').innerHTML=v.map(h=>{const d=h.date,tg=h.t==='off'?'Nghỉ lễ':h.t==='vn'?'Việt Nam':'Quốc tế';
+    return`<div class="c${h.days===0?' now':''}"><div class="e">${h.e}</div><div class="t"><h3>${h.n}</h3><p>${DOW[d.getDay()]}, ${p2(d.getDate())}/${p2(d.getMonth()+1)}/${d.getFullYear()}${h.o.l?` · Âm ${h.o.l[0]}/${h.o.l[1]}`:''}</p><span class="tag ${h.t}">${tg}</span></div><div class="n">${h.days===0?'<b>Nay</b>':`<b>${h.days}</b><span>ngày</span>`}</div><button class="sh" data-n="${h.n}" aria-label="Chia sẻ ảnh đếm ngược ${h.n}">📤</button></div>`}).join('');
+  const nx=v[0];if(!nx)return;
+  $('em').textContent=nx.e;$('nm').textContent=nx.n;
+  $('dt').textContent=`${DOW[nx.date.getDay()]}, ${p2(nx.date.getDate())}/${p2(nx.date.getMonth()+1)}/${nx.date.getFullYear()}`;
+  $('lbl').textContent=nx.days===0?'Hôm nay':'Sắp tới';
+  tick();
 }
-requestAnimationFrame(frame);
-document.addEventListener('visibilitychange',()=>{paused=document.hidden});
-
-/* interaction */
-let lastHeart=0;
-function pop(x,y,n){for(let k=0;k<n&&hearts.length<60;k++)heart(x+rnd(-12,12),y+rnd(-8,8))}
-addEventListener('pointerdown',e=>{pop(e.clientX,e.clientY,5);if(!reduce)burst(e.clientX,e.clientY,cols[(Math.random()*cols.length)|0])});
-addEventListener('pointermove',e=>{const n=performance.now();if(n-lastHeart>90){lastHeart=n;pop(e.clientX,e.clientY,1)}});
-
-/* card + gift */
-const sc=$('scene');sc.addEventListener('click',()=>sc.classList.toggle('open'));
-const g=$('gift'),sp=$('surprise');
-g.addEventListener('click',e=>{
-  g.classList.add('open');sp.classList.add('show');
-  const r=g.getBoundingClientRect();
-  if(!reduce)for(let k=0;k<4;k++)setTimeout(()=>launch(rnd(.2,.8)*W,rnd(.15,.5)*H),k*220);
-  pop(r.left+r.width/2,r.top,18);
-  setTimeout(()=>sp.scrollIntoView({behavior:reduce?'auto':'smooth',block:'center'}),300);
-});
-
-/* music: gentle synthesized melody (no external files) */
-let ac=null,master,timer=null,step=0,on=false;
-const mel=[659,784,880,784,659,587,523,587,659,784,659,523,587,523,440,523];
-const bass=[220,220,196,196,175,175,196,196];
-function note(f,t0,d,vol,type){const o=ac.createOscillator(),gn=ac.createGain();o.type=type;o.frequency.value=f;
-  gn.gain.setValueAtTime(0,t0);gn.gain.linearRampToValueAtTime(vol,t0+.04);gn.gain.exponentialRampToValueAtTime(.0008,t0+d);
-  o.connect(gn);gn.connect(master);o.start(t0);o.stop(t0+d+.05)}
-function sched(){const t0=ac.currentTime+.05,q=.55;
-  note(mel[step%16],t0,q*1.8,.09,'sine');note(mel[step%16]*2,t0,q,.02,'triangle');
-  if(step%2===0)note(bass[(step/2|0)%8],t0,q*3,.07,'triangle');step++}
-$('music').addEventListener('click',e=>{
-  const bt=e.currentTarget;on=!on;
-  if(on){ac=ac||new(window.AudioContext||window.webkitAudioContext)();
-    if(!master){master=ac.createGain();master.gain.value=.9;master.connect(ac.destination)}
-    ac.resume();sched();timer=setInterval(sched,550)}
-  else{clearInterval(timer);if(ac)ac.suspend()}
-  bt.classList.toggle('on',on);bt.setAttribute('aria-pressed',on);bt.textContent=on?'♫':'♪';
-  bt.setAttribute('aria-label',on?'Tắt nhạc nền':'Bật nhạc nền');
-});
-for(let k=0;k<3;k++)setTimeout(()=>launch(),400+k*500);
+function tick(){
+  const now=new Date();
+  if(now.toDateString()!==dayKey){build(now);return}
+  const v=list.filter(h=>filter==='all'||h.t===filter),nx=v[0];if(!nx)return;
+  const isNow=nx.days===0;$('units').hidden=isNow;$('today').hidden=!isNow;
+  if(isNow)return;
+  let s=Math.max(0,Math.floor((nx.date-now)/1000));
+  $('d').textContent=Math.floor(s/86400);$('h').textContent=p2(Math.floor(s%86400/3600));
+  $('m').textContent=p2(Math.floor(s%3600/60));$('s').textContent=p2(s%60);
+}
+$('tabs').addEventListener('click',e=>{const b=e.target.closest('.tab');if(!b)return;filter=b.dataset.f;
+  document.querySelectorAll('.tab').forEach(x=>x.setAttribute('aria-pressed',x===b));render()});
+/* ảnh chia sẻ */
+let bgImg=null,curH=null;
+function rr(g,x,y,w,h,r){g.beginPath();g.moveTo(x+r,y);g.arcTo(x+w,y,x+w,y+h,r);g.arcTo(x+w,y+h,x,y+h,r);g.arcTo(x,y+h,x,y,r);g.arcTo(x,y,x+w,y,r);g.closePath()}
+function wrapText(g,t,x,y,mw,lh){let line='',ys=y;for(const w of t.split(' ')){const test=line?line+' '+w:w;if(g.measureText(test).width>mw&&line){g.fillText(line,x,ys);line=w;ys+=lh}else line=test}g.fillText(line,x,ys);return ys}
+async function makeImg(h){
+  try{await Promise.all([document.fonts.load('800 80px "Be Vietnam Pro"'),document.fonts.load('500 40px "Be Vietnam Pro"')])}catch(e){}
+  const W=1080,HH=1350,c=document.createElement('canvas');c.width=W;c.height=HH;const g=c.getContext('2d'),F='"Be Vietnam Pro","Segoe UI",sans-serif';
+  const bg=g.createRadialGradient(200,0,50,W/2,HH/2,1100);bg.addColorStop(0,'#d81b4a');bg.addColorStop(.55,'#8a0f31');bg.addColorStop(1,'#3d0716');g.fillStyle=bg;g.fillRect(0,0,W,HH);
+  if(bgImg){const s=Math.max(W/bgImg.width,HH/bgImg.height),iw=bgImg.width*s,ih=bgImg.height*s;g.drawImage(bgImg,(W-iw)/2,(HH-ih)/2,iw,ih);const ov=g.createLinearGradient(0,0,0,HH);ov.addColorStop(0,'rgba(60,5,25,.55)');ov.addColorStop(.5,'rgba(60,5,25,.45)');ov.addColorStop(1,'rgba(40,0,15,.78)');g.fillStyle=ov;g.fillRect(0,0,W,HH)}
+  const gl=g.createRadialGradient(900,200,0,900,200,420);gl.addColorStop(0,'rgba(255,217,138,.45)');gl.addColorStop(1,'rgba(255,217,138,0)');g.fillStyle=gl;g.fillRect(0,0,W,HH);
+  g.strokeStyle='rgba(255,225,160,.6)';g.lineWidth=3;rr(g,48,48,W-96,HH-96,48);g.stroke();
+  g.textAlign='center';g.fillStyle='#ffe3a3';g.font='600 34px '+F;g.fillText(h.days===0?'HÔM NAY':'SẮP TỚI',W/2,160);
+  g.font='200px "Segoe UI Emoji","Apple Color Emoji","Noto Color Emoji",sans-serif';g.fillText(h.e,W/2,400);
+  g.fillStyle='#fff';g.font='800 72px '+F;wrapText(g,h.n,W/2,520,W-200,88);
+  g.fillStyle='#fff';
+  if(h.days===0){g.font='800 190px '+F;g.fillText('Hôm nay!',W/2,930)}
+  else{g.font='800 300px '+F;g.fillText(String(h.days),W/2,930);g.fillStyle='#ffe3a3';g.font='600 56px '+F;g.fillText('ngày nữa',W/2,1010)}
+  const d=h.date;g.fillStyle='#fff';g.font='500 40px '+F;
+  g.fillText(`${DOW[d.getDay()]}, ${p2(d.getDate())}/${p2(d.getMonth()+1)}/${d.getFullYear()}${h.o.l?` (Âm ${h.o.l[0]}/${h.o.l[1]})`:''}`,W/2,1110);
+  g.fillStyle='rgba(255,225,160,.8)';g.font='500 30px '+F;g.fillText('Đếm ngược ngày lễ Việt Nam và quốc tế',W/2,1240);
+  return c;
+}
+let curBlob=null,curFile=null;
+async function openShare(h){
+  curH=h;const c=await makeImg(h);
+  $('mi').src=c.toDataURL('image/png');
+  c.toBlob(b=>{curBlob=b;curFile=new File([b],`dem-nguoc-${h.days}-ngay.png`,{type:'image/png'});
+    $('msh').hidden=!(navigator.canShare&&navigator.canShare({files:[curFile]}))},'image/png');
+  $('md').hidden=false;
+}
+$('grid').addEventListener('click',e=>{const b=e.target.closest('.sh');if(!b)return;const h=list.find(x=>x.n===b.dataset.n);if(h)openShare(h)});
+$('hshare').addEventListener('click',()=>{const v=list.filter(h=>filter==='all'||h.t===filter);if(v[0])openShare(v[0])});
+$('msh').addEventListener('click',async()=>{try{await navigator.share({files:[curFile],title:'Đếm ngược ngày lễ'})}catch(e){}});
+$('mdl').addEventListener('click',()=>{if(!curBlob)return;const a=document.createElement('a');a.href=URL.createObjectURL(curBlob);a.download=curFile.name;document.body.appendChild(a);a.click();a.remove()});
+$('mbg').addEventListener('click',()=>$('bgf').click());
+$('bgf').addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{const im=new Image();im.onload=()=>{bgImg=im;$('mrs').hidden=false;if(curH)openShare(curH)};im.src=r.result};r.readAsDataURL(f);e.target.value=''});
+$('mrs').addEventListener('click',()=>{bgImg=null;$('mrs').hidden=true;if(curH)openShare(curH)});
+const closeM=()=>{$('md').hidden=true};
+$('mcl').addEventListener('click',closeM);
+$('md').addEventListener('click',e=>{if(e.target.id==='md')closeM()});
+addEventListener('keydown',e=>{if(e.key==='Escape')closeM()});
+build(new Date());setInterval(tick,1000);
+document.addEventListener('visibilitychange',()=>{if(!document.hidden)tick()});
 })();
 </script>
 </body>
