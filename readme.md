@@ -31,7 +31,7 @@ Bạn không cần phải nhớ lịch âm! Trang web đã tự động tính to
 ---
 
 ## 🚀 Cách sử dụng
-Rất đơn giản! Bạn chỉ cần **[bấm vào đây để mở trang web](https://cheemsgalaxy.github.io/HolidayCountPro/){:target="_blank"}** và xem. 
+Rất đơn giản! Bạn chỉ cần **[bấm vào đây để mở trang web](https://cheemsgalaxy.github.io/HolidayCountPro/)** và xem. 
 Nếu muốn lưu lại để dùng hàng ngày, bạn có thể thêm trang web vào màn hình chính (Bookmark) của điện thoại hoặc máy tính.
 
 ## 📌 Lưu ý nhỏ
