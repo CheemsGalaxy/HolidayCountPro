@@ -2,7 +2,7 @@
 
 Chào mừng bạn đến với **Đếm Ngược Ngày Lễ** – công cụ giúp bạn không bao giờ bỏ lỡ những dịp quan trọng trong năm! Trang web này giúp bạn theo dõi thời gian còn lại đến các ngày lễ Việt Nam và Quốc tế một cách trực quan và đẹp mắt.
 
-👉 **[TRẢI NGHIỆM NGAY TẠI ĐÂY](https://cheemsgalaxy.github.io/HolidayCountPro/){:target="_blank"}**
+👉 👉 <a href="https://cheemsgalaxy.github.io/HolidayCountPro/" target="_blank" rel="noopener noreferrer"><strong>TRẢI NGHIỆM NGAY TẠI ĐÂY: **https://cheemsgalaxy.github.io/HolidayCountPro/**</strong></a>
 
 ## ✨ Bạn có thể làm gì với trang web này?
 
