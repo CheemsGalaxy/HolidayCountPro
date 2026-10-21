@@ -59,6 +59,7 @@ h1 span{color:var(--accent)}
 .mr{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
 .mr button{border:1px solid var(--line);background:var(--bg);color:var(--ink);font:600 14px "Be Vietnam Pro",sans-serif;padding:9px 16px;border-radius:99px;cursor:pointer}
 .mr #msh{background:var(--accent);color:#fff;border-color:var(--accent)}
+.flag{width:1.1em;height:.74em;vertical-align:-.08em;border-radius:3px;box-shadow:0 1px 4px rgba(0,0,0,.3)}
 @media (max-width:420px){.u i{font-size:11px}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
@@ -109,18 +110,18 @@ const H=[
 ['Tết Dương lịch','🎆','off',{d:[1,1]}],
 ['Tết Nguyên Đán (mùng 1)','🧧','off',{l:[1,1]}],
 ['Giỗ Tổ Hùng Vương','🏯','off',{l:[10,3]}],
-['Ngày Giải phóng miền Nam','🇻🇳','off',{d:[30,4]}],
+['Ngày Giải phóng miền Nam','VN','off',{d:[30,4]}],
 ['Quốc tế Lao động','🛠️','off',{d:[1,5]}],
-['Quốc khánh','🇻🇳','off',{d:[2,9]}],
+['Quốc khánh','VN','off',{d:[2,9]}],
 ['Rằm tháng Giêng','🏮','vn',{l:[15,1]}],
-['Ngày Thầy thuốc Việt Nam','🩺','vn',{d:[27,2]}],
+['Ngày Thầy thuốc Việt Nam','🏥','vn',{d:[27,2]}],
 ['Ngày thành lập Đoàn TNCS','🚩','vn',{d:[26,3]}],
 ['Tết Hàn Thực','🍡','vn',{l:[3,3]}],
 ['Ngày Sách và Văn hóa đọc','📚','vn',{d:[21,4]}],
 ['Tết Đoan Ngọ','🍑','vn',{l:[5,5]}],
 ['Ngày Gia đình Việt Nam','🏡','vn',{d:[28,6]}],
 ['Ngày Thương binh Liệt sĩ','🕯️','vn',{d:[27,7]}],
-['Lễ Vu Lan','🪷','vn',{l:[15,7]}],
+['Lễ Vu Lan','🌸','vn',{l:[15,7]}],
 ['Tết Trung Thu','🥮','vn',{l:[15,8]}],
 ['Ngày Giải phóng Thủ đô','🏙️','vn',{d:[10,10]}],
 ['Ngày Doanh nhân Việt Nam','💼','vn',{d:[13,10]}],
@@ -144,6 +145,8 @@ const H=[
 ];
 const DOW=['Chủ nhật','Thứ hai','Thứ ba','Thứ tư','Thứ năm','Thứ sáu','Thứ bảy'];
 const $=id=>document.getElementById(id),p2=n=>String(n).padStart(2,'0');
+const FLAG='<svg class="flag" viewBox="0 0 30 20" role="img" aria-label="Cờ Việt Nam"><rect width="30" height="20" fill="#da251d"/><polygon fill="#ff0" points="15,3.9 16.46,8.4 21.18,8.39 17.36,11.17 18.82,15.66 15,12.88 11.18,15.66 12.64,11.17 8.82,8.39 13.54,8.4"/></svg>';
+const emo=e=>e==='VN'?FLAG:e;
 const occ=(o,y)=>{if(o.l){const r=l2s(o.l[0],o.l[1],y);return new Date(r[2],r[1]-1,r[0])}return o.f?o.f(y):new Date(y,o.d[1]-1,o.d[0])};
 let filter='all',list=[],dayKey='';
 
@@ -156,9 +159,9 @@ function build(now){
 function render(){
   const v=list.filter(h=>filter==='all'||h.t===filter);
   $('grid').innerHTML=v.map(h=>{const d=h.date,tg=h.t==='off'?'Nghỉ lễ':h.t==='vn'?'Việt Nam':'Quốc tế';
-    return`<div class="c${h.days===0?' now':''}"><div class="e">${h.e}</div><div class="t"><h3>${h.n}</h3><p>${DOW[d.getDay()]}, ${p2(d.getDate())}/${p2(d.getMonth()+1)}/${d.getFullYear()}${h.o.l?` · Âm ${h.o.l[0]}/${h.o.l[1]}`:''}</p><span class="tag ${h.t}">${tg}</span></div><div class="n">${h.days===0?'<b>Nay</b>':`<b>${h.days}</b><span>ngày</span>`}</div><button class="sh" data-n="${h.n}" aria-label="Chia sẻ ảnh đếm ngược ${h.n}">📤</button></div>`}).join('');
+    return`<div class="c${h.days===0?' now':''}"><div class="e">${emo(h.e)}</div><div class="t"><h3>${h.n}</h3><p>${DOW[d.getDay()]}, ${p2(d.getDate())}/${p2(d.getMonth()+1)}/${d.getFullYear()}${h.o.l?` · Âm ${h.o.l[0]}/${h.o.l[1]}`:''}</p><span class="tag ${h.t}">${tg}</span></div><div class="n">${h.days===0?'<b>Nay</b>':`<b>${h.days}</b><span>ngày</span>`}</div><button class="sh" data-n="${h.n}" aria-label="Chia sẻ ảnh đếm ngược ${h.n}">📤</button></div>`}).join('');
   const nx=v[0];if(!nx)return;
-  $('em').textContent=nx.e;$('nm').textContent=nx.n;
+  $('em').innerHTML=emo(nx.e);$('nm').textContent=nx.n;
   $('dt').textContent=`${DOW[nx.date.getDay()]}, ${p2(nx.date.getDate())}/${p2(nx.date.getMonth()+1)}/${nx.date.getFullYear()}`;
   $('lbl').textContent=nx.days===0?'Hôm nay':'Sắp tới';
   tick();
@@ -187,7 +190,7 @@ async function makeImg(h){
   const gl=g.createRadialGradient(900,200,0,900,200,420);gl.addColorStop(0,'rgba(255,217,138,.45)');gl.addColorStop(1,'rgba(255,217,138,0)');g.fillStyle=gl;g.fillRect(0,0,W,HH);
   g.strokeStyle='rgba(255,225,160,.6)';g.lineWidth=3;rr(g,48,48,W-96,HH-96,48);g.stroke();
   g.textAlign='center';g.fillStyle='#ffe3a3';g.font='600 34px '+F;g.fillText(h.days===0?'HÔM NAY':'SẮP TỚI',W/2,160);
-  g.font='200px "Segoe UI Emoji","Apple Color Emoji","Noto Color Emoji",sans-serif';g.fillText(h.e,W/2,400);
+  if(h.e==='VN'){g.save();g.translate(W/2-135,250);g.scale(9,9);g.fillStyle='#da251d';g.fillRect(0,0,30,20);g.fillStyle='#ffff00';g.fill(new Path2D('M15 3.9L16.46 8.4L21.18 8.39L17.36 11.17L18.82 15.66L15 12.88L11.18 15.66L12.64 11.17L8.82 8.39L13.54 8.4Z'));g.restore()}else{g.font='200px "Segoe UI Emoji","Apple Color Emoji","Noto Color Emoji",sans-serif';g.fillText(h.e,W/2,400)}
   g.fillStyle='#fff';g.font='800 72px '+F;wrapText(g,h.n,W/2,520,W-200,88);
   g.fillStyle='#fff';
   if(h.days===0){g.font='800 190px '+F;g.fillText('Hôm nay!',W/2,930)}
