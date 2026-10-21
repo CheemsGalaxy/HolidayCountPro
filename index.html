@@ -226,9 +226,9 @@ function drawAlt(g,h,W,HH,F){
     g.fillStyle='#fff';
     if(now0){g.font='800 84px '+F;g.fillText('Hôm nay!',312,py+215)}
     else{g.font='800 190px '+F;g.fillText(String(h.days),312,py+245);g.fillStyle='#ffe3a3';g.font='600 46px '+F;g.fillText('ngày nữa',312,py+315)}
-    g.fillStyle='#fff';em(770,py+120,84);
-    g.fillStyle='#fff';g.textAlign='center';g.font='800 44px '+F;const ls=lines(g,h.n,380);ls.forEach((t,i)=>g.fillText(t,770,py+195+i*54));
-    g.font='500 36px '+F;g.fillText(dt+am,W/2,py+ph+70);
+    g.font='800 44px '+F;const ls=lines(g,h.n,380),tp=py+ph/2-(194+(ls.length-1)*54)/2;g.fillStyle='#fff';em(770,tp+76,84);
+    g.fillStyle='#fff';g.textAlign='center';g.font='800 44px '+F;ls.forEach((t,i)=>g.fillText(t,770,tp+144+i*54));
+    g.fillStyle='rgba(255,225,160,.9)';g.font='600 28px '+F;g.fillText('HolidayCountPro',770,tp+144+(ls.length-1)*54+50);g.fillStyle='#fff';g.font='500 36px '+F;g.fillText(dt+am,W/2,py+ph+70);
   }
   g.shadowBlur=0;g.strokeStyle='rgba(255,225,160,.6)';g.lineWidth=3;rr(g,48,48,W-96,HH-96,48);g.stroke();
 }
