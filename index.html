@@ -199,7 +199,7 @@ async function makeImg(h){
   else{g.font='800 300px '+F;g.fillText(String(h.days),W/2,930);g.fillStyle='#ffe3a3';g.font='600 56px '+F;g.fillText('ngày nữa',W/2,1010)}
   const d=h.date;g.fillStyle='#fff';g.font='500 40px '+F;
   g.fillText(`${DOW[d.getDay()]}, ${p2(d.getDate())}/${p2(d.getMonth()+1)}/${d.getFullYear()}${h.o.l?` (Âm ${h.o.l[0]}/${h.o.l[1]})`:''}`,W/2,1110);
-  g.fillStyle='rgba(255,225,160,.8)';g.font='500 30px '+F;g.fillText('Đếm ngược ngày lễ Việt Nam và quốc tế',W/2,1240);
+  g.fillStyle='rgba(255,225,160,.8)';g.font='500 30px '+F;g.fillText('HolidayCountPro',W/2,1240);
   return c;
 }
 function lines(g,t,mw){const o=[];let l='';for(const w of t.split(' ')){const s=l?l+' '+w:w;if(g.measureText(s).width>mw&&l){o.push(l);l=w}else l=s}o.push(l);return o}
@@ -217,7 +217,7 @@ function drawAlt(g,h,W,HH,F){
     else{g.font='800 200px '+F;g.fillText(String(h.days),96,1100);const nw=g.measureText(String(h.days)).width;g.fillStyle='#ffe3a3';g.font='600 52px '+F;g.fillText('ngày nữa',96+nw+26,1100)}
     g.fillStyle='#fff';em(W-190,1100,140);
     g.fillStyle='#fff';g.font='500 38px '+F;g.textAlign='left';g.fillText(dt+am,96,1175);
-    g.fillStyle='rgba(255,225,160,.85)';g.font='500 28px '+F;g.fillText('Đếm ngược ngày lễ Việt Nam và quốc tế',96,1245);
+    g.fillStyle='rgba(255,225,160,.85)';g.font='500 28px '+F;g.fillText('HolidayCountPro',96,1245);
   }else{
     const px=84,py=820,pw=W-168,ph=380;
     g.fillStyle='rgba(30,0,12,.58)';rr(g,px,py,pw,ph,40);g.fill();g.strokeStyle='rgba(255,225,160,.55)';g.lineWidth=2;g.stroke();
