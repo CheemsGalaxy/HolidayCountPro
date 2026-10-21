@@ -1,7 +1,8 @@
-Truy cập: https://cheemsgalaxy.github.io/HolidayCountPro/
-# 🎉 Đếm Ngược Ngày Lễ
+# 🎉 Đếm Ngược Ngày Lễ (Holiday Count Pro)
 
 Chào mừng bạn đến với **Đếm Ngược Ngày Lễ** – công cụ giúp bạn không bao giờ bỏ lỡ những dịp quan trọng trong năm! Trang web này giúp bạn theo dõi thời gian còn lại đến các ngày lễ Việt Nam và Quốc tế một cách trực quan và đẹp mắt.
+
+👉 **[TRẢI NGHIỆM NGAY TẠI ĐÂY](https://cheemsgalaxy.github.io/HolidayCountPro/){:target="_blank"}**
 
 ## ✨ Bạn có thể làm gì với trang web này?
 
@@ -30,7 +31,7 @@ Bạn không cần phải nhớ lịch âm! Trang web đã tự động tính to
 ---
 
 ## 🚀 Cách sử dụng
-Rất đơn giản! Bạn chỉ cần mở trang web lên và xem. 
+Rất đơn giản! Bạn chỉ cần **[bấm vào đây để mở trang web](https://cheemsgalaxy.github.io/HolidayCountPro/){:target="_blank"}** và xem. 
 Nếu muốn lưu lại để dùng hàng ngày, bạn có thể thêm trang web vào màn hình chính (Bookmark) của điện thoại hoặc máy tính.
 
 ## 📌 Lưu ý nhỏ
