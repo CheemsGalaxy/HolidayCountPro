@@ -14,7 +14,7 @@
 [hidden]{display:none!important}
 html{height:100%;scroll-padding-top:env(safe-area-inset-top,0px)}
 body{min-height:100%;background:var(--bg);color:var(--ink);font-family:"Be Vietnam Pro","Segoe UI",system-ui,sans-serif;-webkit-tap-highlight-color:transparent}
-main{max-width:1060px;margin:0 auto;padding:28px 16px 56px}
+main{position:relative;z-index:1;max-width:1060px;margin:0 auto;padding:48px 16px 56px}
 h1{font-size:clamp(26px,5vw,40px);font-weight:800;letter-spacing:-.02em;text-align:center}
 h1 span{color:var(--accent)}
 .sub{text-align:center;color:var(--mut);margin:6px 0 22px;font-size:15px}
@@ -61,12 +61,90 @@ h1 span{color:var(--accent)}
 .mr #msh{background:var(--accent);color:#fff;border-color:var(--accent)}
 .lay{margin-bottom:8px}.lay button{padding:7px 14px;font-size:13px}.lay button[aria-pressed="true"]{background:var(--gold);border-color:var(--gold);color:#2a1018}
 .flag{width:1.1em;height:.74em;vertical-align:-.08em;border-radius:3px;box-shadow:0 1px 4px rgba(0,0,0,.3)}
+.hbtns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:20px;position:relative;z-index:1}.hbtns .hshare{margin-top:0}
+.c{cursor:pointer}.c:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.c.sel{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent),var(--shadow)}
+.bg,.thumb{display:none}
+.bg{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.sw{position:absolute;top:12px;right:12px;z-index:15}
+.sbtn{width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--ink);font-size:18px;cursor:pointer;box-shadow:var(--shadow)}
+.smenu{position:absolute;right:0;top:50px;width:min(280px,calc(100vw - 32px));padding:14px;border-radius:20px;background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow)}
+.sg+.sg{margin-top:12px}.sg b{font-size:12.5px;color:var(--mut);font-weight:700}
+.seg{display:flex;gap:6px;margin-top:6px}
+.seg button{flex:1;border:1px solid var(--line);background:var(--bg);color:var(--ink);font:600 13px "Be Vietnam Pro",sans-serif;padding:8px 6px;border-radius:99px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+.sbtn:focus-visible,.seg button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.bg i{position:absolute;border-radius:50%;filter:blur(70px);opacity:.8}
+.bg i:nth-child(1){width:46vmax;height:46vmax;left:-12vmax;top:-10vmax;background:var(--b1);animation:fl1 22s ease-in-out infinite alternate}
+.bg i:nth-child(2){width:40vmax;height:40vmax;right:-14vmax;top:20vh;background:var(--b2);animation:fl2 26s ease-in-out infinite alternate}
+.bg i:nth-child(3){width:44vmax;height:44vmax;left:10vw;bottom:-18vmax;background:var(--b3);animation:fl1 30s ease-in-out infinite alternate-reverse}
+@keyframes fl1{to{transform:translate3d(8vmax,6vmax,0) scale(1.15)}}
+@keyframes fl2{to{transform:translate3d(-9vmax,-5vmax,0) scale(.9)}}
+html[data-style="glass"]{--g-bg:rgba(255,255,255,.26);--g-brd:rgba(255,255,255,.6);--g-hi:rgba(255,255,255,.95);--g-sh:rgba(120,30,60,.18);--thumb:rgba(255,255,255,.6);--page1:#ffe3ec;--page2:#ffefd6;--b1:#ff6b9a;--b2:#ffb347;--b3:#8c6bff}
+@media (prefers-color-scheme:dark){html[data-style="glass"]:not([data-theme="light"]){--g-bg:rgba(255,255,255,.08);--g-brd:rgba(255,255,255,.22);--g-hi:rgba(255,255,255,.5);--g-sh:rgba(0,0,0,.5);--thumb:rgba(255,255,255,.2);--page1:#10050b;--page2:#1c0912;--b1:#d81b55;--b2:#ff7a35;--b3:#5a3bff}}
+html[data-style="glass"][data-theme="dark"]{--g-bg:rgba(255,255,255,.08);--g-brd:rgba(255,255,255,.22);--g-hi:rgba(255,255,255,.5);--g-sh:rgba(0,0,0,.5);--thumb:rgba(255,255,255,.2);--page1:#10050b;--page2:#1c0912;--b1:#d81b55;--b2:#ff7a35;--b3:#5a3bff}
+html[data-style="glass"] body{background:linear-gradient(160deg,var(--page1),var(--page2)) fixed}
+html[data-style="glass"] .bg{display:block}
+html[data-style="glass"] .thumb{display:block}
+html[data-style="glass"] .hero,html[data-style="glass"] .c,html[data-style="glass"] .tabs,html[data-style="glass"] .mb,html[data-style="glass"] .hshare,html[data-style="glass"] .sh,html[data-style="glass"] .sbtn,html[data-style="glass"] .smenu{background:var(--g-bg);-webkit-backdrop-filter:blur(22px) saturate(180%);backdrop-filter:blur(22px) saturate(180%);border:1px solid var(--g-brd);box-shadow:inset 0 1.5px 0 var(--g-hi),inset 0 -1px 0 rgba(255,255,255,.12),inset 0 0 24px rgba(255,255,255,.10),0 14px 38px var(--g-sh)}
+html[data-style="glass"] .hero{border-radius:36px;background:linear-gradient(135deg,rgba(225,30,85,.62),rgba(255,125,80,.40));text-shadow:0 1px 8px rgba(80,0,30,.35)}
+html[data-style="glass"] .hero::before,html[data-style="glass"] .c::before{content:"";position:absolute;inset:0;border-radius:inherit;background:linear-gradient(135deg,rgba(255,255,255,.42),transparent 34%,transparent 66%,rgba(255,255,255,.16));pointer-events:none}
+html[data-style="glass"] .u{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.42);box-shadow:inset 0 1px 0 rgba(255,255,255,.65),0 6px 18px rgba(80,0,30,.18);border-radius:22px}
+html[data-style="glass"] .hshare{color:#fff}
+html[data-style="glass"] .c{position:relative;border-radius:28px}
+html[data-style="glass"] .c .e{background:rgba(255,255,255,.38);box-shadow:inset 0 1px 0 rgba(255,255,255,.8)}
+html[data-style="glass"] .c.now{box-shadow:inset 0 1.5px 0 var(--g-hi),0 0 0 2px var(--gold),0 14px 38px var(--g-sh)}
+html[data-style="glass"] .c.sel{border-color:var(--accent);box-shadow:inset 0 1.5px 0 var(--g-hi),0 0 0 2px var(--accent),0 14px 38px var(--g-sh)}
+html[data-style="glass"] .sh{width:38px;height:38px}
+html[data-style="glass"] .tag{background:rgba(255,255,255,.4)}
+html[data-style="glass"] .tag.off{background:var(--accent)}
+html[data-style="glass"] .tabs{position:relative;display:flex;gap:2px;padding:5px;margin:24px auto 16px;border-radius:99px;width:fit-content;max-width:100%}
+html[data-style="glass"] .tab{position:relative;z-index:1;background:transparent;border:0;color:var(--ink);padding:9px 16px;font-weight:600}
+html[data-style="glass"] .tab[aria-pressed="true"]{background:transparent;color:var(--ink);font-weight:800}
+html[data-style="glass"] .thumb{position:absolute;left:0;top:5px;bottom:5px;width:0;border-radius:99px;background:var(--thumb);box-shadow:inset 0 1px 0 rgba(255,255,255,.95),0 4px 14px rgba(120,20,50,.25);transition:transform .5s cubic-bezier(.3,1.4,.4,1),width .5s cubic-bezier(.3,1.4,.4,1);z-index:0}
+html[data-style="glass"] .md{background:rgba(20,5,12,.35);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+html[data-style="glass"] .mb,html[data-style="glass"] .smenu{border-radius:34px;background:rgba(255,255,255,.30);-webkit-backdrop-filter:blur(34px) saturate(190%);backdrop-filter:blur(34px) saturate(190%)}
+html[data-style="glass"] .smenu{border-radius:26px}
+html[data-style="glass"] .seg button,html[data-style="glass"] .mr button{background:rgba(255,255,255,.28);border:1px solid rgba(255,255,255,.5);box-shadow:inset 0 1px 0 rgba(255,255,255,.7)}
+html[data-style="glass"] .seg button[aria-pressed="true"]{background:var(--accent);color:#fff}
+html[data-style="glass"] .mr #msh{background:var(--accent);color:#fff;border-color:rgba(255,255,255,.4)}
+html[data-style="glass"] .lay button[aria-pressed="true"]{background:var(--gold);color:#2a1018}
+@media (prefers-color-scheme:dark){html[data-style="glass"]:not([data-theme="light"]) .mb,html[data-style="glass"]:not([data-theme="light"]) .smenu{background:rgba(40,16,28,.55)}}
+html[data-style="glass"][data-theme="dark"] .mb,html[data-style="glass"][data-theme="dark"] .smenu{background:rgba(40,16,28,.55)}
+@keyframes gIn{from{opacity:0;transform:translateY(18px) scale(.94)}}
+@keyframes gPop{from{opacity:0;transform:scale(.88) translateY(-6px)}}
+@keyframes gFade{from{opacity:0}}
+@keyframes gSweep{0%,55%{background-position:-160% 0,0 0}100%{background-position:260% 0,0 0}}
+@keyframes gFloat{50%{transform:translateY(-5px)}}
+@keyframes gBreathe{50%{transform:scale(1.25);opacity:.7}}
+@keyframes gTick{from{transform:scale(1.18);opacity:.6}}
+html[data-style="glass"] .bg{animation:gFade 1.2s ease}
+html[data-style="glass"] .grid .c{animation:gIn .65s cubic-bezier(.2,1.2,.3,1) backwards;animation-delay:calc(var(--i,0)*35ms)}
+html[data-style="glass"] .hero::before{background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.38) 48%,transparent 66%),linear-gradient(135deg,rgba(255,255,255,.42),transparent 34%,transparent 66%,rgba(255,255,255,.16));background-size:250% 100%,100% 100%;background-repeat:no-repeat;animation:gSweep 7s ease-in-out infinite}
+html[data-style="glass"] .hero::after{animation:gBreathe 5s ease-in-out infinite}
+html[data-style="glass"] .hero .em{animation:gFloat 4s ease-in-out infinite}
+html[data-style="glass"] .u b.tk{animation:gTick .5s cubic-bezier(.2,1.5,.4,1)}
+html[data-style="glass"] .c::after{content:"";position:absolute;inset:0;border-radius:inherit;background:radial-gradient(170px circle at var(--mx,50%) var(--my,0%),rgba(255,255,255,.38),transparent 62%);opacity:0;transition:opacity .3s;pointer-events:none}
+html[data-style="glass"] .c:hover::after{opacity:1}
+html[data-style="glass"] .hshare,html[data-style="glass"] .sh,html[data-style="glass"] .sbtn,html[data-style="glass"] .seg button,html[data-style="glass"] .mr button,html[data-style="glass"] .tab{transition:transform .25s cubic-bezier(.2,1.5,.4,1)}
+html[data-style="glass"] .c:active,html[data-style="glass"] .hshare:active,html[data-style="glass"] .sh:active,html[data-style="glass"] .sbtn:active,html[data-style="glass"] .seg button:active,html[data-style="glass"] .mr button:active,html[data-style="glass"] .tab:active{transform:scale(.95)}
+html[data-style="glass"] .smenu:not([hidden]){animation:gPop .38s cubic-bezier(.2,1.3,.3,1);transform-origin:top right}
+html[data-style="glass"] .md:not([hidden]){animation:gFade .3s ease}
+html[data-style="glass"] .md:not([hidden]) .mb{animation:gPop .5s cubic-bezier(.2,1.3,.3,1)}
+@media (prefers-reduced-motion:reduce){html[data-style="glass"] *,html[data-style="glass"] *::before,html[data-style="glass"] *::after{animation:none!important}}
 @media (max-width:420px){.u i{font-size:11px}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
+<script>try{var m=localStorage.getItem("hcp-mode"),st=localStorage.getItem("hcp-style");if(m==="light"||m==="dark")document.documentElement.setAttribute("data-theme",m);if(st==="glass")document.documentElement.setAttribute("data-style","glass")}catch(e){}</script>
 </head>
 <body>
+<div class="bg" aria-hidden="true"><i></i><i></i><i></i></div>
 <main>
+  <div class="sw"><button class="sbtn" id="sbtn" aria-label="Giao diện" aria-expanded="false">🎨</button>
+    <div class="smenu" id="smenu" hidden role="dialog" aria-label="Giao diện">
+      <div class="sg"><b>Chế độ</b><div class="seg" data-k="mode"><button data-v="auto">Tự động</button><button data-v="light">Sáng</button><button data-v="dark">Tối</button></div></div>
+      <div class="sg"><b>Phong cách</b><div class="seg" data-k="style"><button data-v="classic">Cổ điển</button><button data-v="glass">Liquid Glass</button></div></div>
+    </div></div>
   <h1>Đếm ngược <span>ngày lễ</span></h1>
   <p class="sub">Lễ Việt Nam và các ngày lễ quốc tế được đón mừng tại Việt Nam</p>
   <section class="hero" aria-live="off">
@@ -81,9 +159,9 @@ h1 span{color:var(--accent)}
       <div class="u"><b id="s">0</b><i>giây</i></div>
     </div>
     <div class="today" id="today" hidden>Hôm nay là ngày lễ!</div>
-    <button class="hshare" id="hshare">📤 Chia sẻ ảnh đếm ngược</button>
+    <div class="hbtns"><button class="hshare" id="hback" hidden>↩ Về ngày lễ sắp tới</button><button class="hshare" id="hshare">📤 Chia sẻ ảnh đếm ngược</button></div>
   </section>
-  <div class="tabs" id="tabs" role="group" aria-label="Lọc ngày lễ">
+  <div class="tabs" id="tabs" role="group" aria-label="Lọc ngày lễ"><span class="thumb" id="thumb"></span>
     <button class="tab" data-f="all" aria-pressed="true">Tất cả</button>
     <button class="tab" data-f="off" aria-pressed="false">Nghỉ lễ chính thức</button>
     <button class="tab" data-f="vn" aria-pressed="false">Ngày lễ Việt Nam</button>
@@ -149,7 +227,8 @@ const $=id=>document.getElementById(id),p2=n=>String(n).padStart(2,'0');
 const FLAG='<svg class="flag" viewBox="0 0 30 20" role="img" aria-label="Cờ Việt Nam"><rect width="30" height="20" fill="#da251d"/><polygon fill="#ff0" points="15,3.9 16.46,8.4 21.18,8.39 17.36,11.17 18.82,15.66 15,12.88 11.18,15.66 12.64,11.17 8.82,8.39 13.54,8.4"/></svg>';
 const emo=e=>e==='VN'?FLAG:e;
 const occ=(o,y)=>{if(o.l){const r=l2s(o.l[0],o.l[1],y);return new Date(r[2],r[1]-1,r[0])}return o.f?o.f(y):new Date(y,o.d[1]-1,o.d[0])};
-let filter='all',list=[],dayKey='';
+let filter='all',list=[],dayKey='',pinned=null;
+const cur=()=>{const v=list.filter(h=>filter==='all'||h.t===filter);return pinned?(list.find(h=>h.n===pinned)||v[0]):v[0]};
 
 function build(now){
   const t0=new Date(now.getFullYear(),now.getMonth(),now.getDate());
@@ -159,26 +238,27 @@ function build(now){
 }
 function render(){
   const v=list.filter(h=>filter==='all'||h.t===filter);
-  $('grid').innerHTML=v.map(h=>{const d=h.date,tg=h.t==='off'?'Nghỉ lễ':h.t==='vn'?'Việt Nam':'Quốc tế';
-    return`<div class="c${h.days===0?' now':''}"><div class="e">${emo(h.e)}</div><div class="t"><h3>${h.n}</h3><p>${DOW[d.getDay()]}, ${p2(d.getDate())}/${p2(d.getMonth()+1)}/${d.getFullYear()}${h.o.l?` · Âm ${h.o.l[0]}/${h.o.l[1]}`:''}</p><span class="tag ${h.t}">${tg}</span></div><div class="n">${h.days===0?'<b>Nay</b>':`<b>${h.days}</b><span>ngày</span>`}</div><button class="sh" data-n="${h.n}" aria-label="Chia sẻ ảnh đếm ngược ${h.n}">📤</button></div>`}).join('');
-  const nx=v[0];if(!nx)return;
+  $('grid').innerHTML=v.map((h,i)=>{const d=h.date,tg=h.t==='off'?'Nghỉ lễ':h.t==='vn'?'Việt Nam':'Quốc tế';
+    return`<div class="c${h.days===0?' now':''}${h.n===pinned?' sel':''}" data-n="${h.n}" tabindex="0" style="--i:${Math.min(i,14)}"><div class="e">${emo(h.e)}</div><div class="t"><h3>${h.n}</h3><p>${DOW[d.getDay()]}, ${p2(d.getDate())}/${p2(d.getMonth()+1)}/${d.getFullYear()}${h.o.l?` · Âm ${h.o.l[0]}/${h.o.l[1]}`:''}</p><span class="tag ${h.t}">${tg}</span></div><div class="n">${h.days===0?'<b>Nay</b>':`<b>${h.days}</b><span>ngày</span>`}</div><button class="sh" data-n="${h.n}" aria-label="Chia sẻ ảnh đếm ngược ${h.n}">📤</button></div>`}).join('');
+  const nx=cur();if(!nx)return;
   $('em').innerHTML=emo(nx.e);$('nm').textContent=nx.n;
   $('dt').textContent=`${DOW[nx.date.getDay()]}, ${p2(nx.date.getDate())}/${p2(nx.date.getMonth()+1)}/${nx.date.getFullYear()}`;
-  $('lbl').textContent=nx.days===0?'Hôm nay':'Sắp tới';
+  $('lbl').textContent=nx.days===0?'Hôm nay':pinned?'Bạn đang chọn':'Sắp tới';$('hback').hidden=!pinned;
   tick();
 }
 function tick(){
   const now=new Date();
   if(now.toDateString()!==dayKey){build(now);return}
-  const v=list.filter(h=>filter==='all'||h.t===filter),nx=v[0];if(!nx)return;
+  const nx=cur();if(!nx)return;
   const isNow=nx.days===0;$('units').hidden=isNow;$('today').hidden=!isNow;
   if(isNow)return;
   let s=Math.max(0,Math.floor((nx.date-now)/1000));
   $('d').textContent=Math.floor(s/86400);$('h').textContent=p2(Math.floor(s%86400/3600));
   $('m').textContent=p2(Math.floor(s%3600/60));$('s').textContent=p2(s%60);
+  if(document.documentElement.dataset.style==='glass'){const se=$('s');se.classList.remove('tk');void se.offsetWidth;se.classList.add('tk')}
 }
-$('tabs').addEventListener('click',e=>{const b=e.target.closest('.tab');if(!b)return;filter=b.dataset.f;
-  document.querySelectorAll('.tab').forEach(x=>x.setAttribute('aria-pressed',x===b));render()});
+$('tabs').addEventListener('click',e=>{const b=e.target.closest('.tab');if(!b)return;filter=b.dataset.f;pinned=null;
+  document.querySelectorAll('.tab').forEach(x=>x.setAttribute('aria-pressed',x===b));render();moveThumb()});
 /* ảnh chia sẻ */
 let bgImg=null,curH=null,lay='mid';
 function rr(g,x,y,w,h,r){g.beginPath();g.moveTo(x+r,y);g.arcTo(x+w,y,x+w,y+h,r);g.arcTo(x+w,y+h,x,y+h,r);g.arcTo(x,y+h,x,y,r);g.arcTo(x,y,x+w,y,r);g.closePath()}
@@ -242,8 +322,13 @@ async function openShare(h){
     $('msh').hidden=!(navigator.canShare&&navigator.canShare({files:[curFile]}))},'image/png');
   $('md').hidden=false;
 }
-$('grid').addEventListener('click',e=>{const b=e.target.closest('.sh');if(!b)return;const h=list.find(x=>x.n===b.dataset.n);if(h)openShare(h)});
-$('hshare').addEventListener('click',()=>{const v=list.filter(h=>filter==='all'||h.t===filter);if(v[0])openShare(v[0])});
+$('grid').addEventListener('click',e=>{const b=e.target.closest('.sh');if(b){const h=list.find(x=>x.n===b.dataset.n);if(h)openShare(h);return}
+  const c=e.target.closest('.c');if(!c)return;pinned=c.dataset.n===pinned?null:c.dataset.n;render();
+  if(pinned)scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth'})});
+$('grid').addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.target.classList.contains('c')){e.preventDefault();e.target.click()}});
+$('grid').addEventListener('pointermove',e=>{if(document.documentElement.dataset.style!=='glass')return;const c=e.target.closest('.c');if(!c)return;const r=c.getBoundingClientRect();c.style.setProperty('--mx',(e.clientX-r.left)+'px');c.style.setProperty('--my',(e.clientY-r.top)+'px')});
+$('hback').addEventListener('click',()=>{pinned=null;render()});
+$('hshare').addEventListener('click',()=>{const h=cur();if(h)openShare(h)});
 $('msh').addEventListener('click',async()=>{try{await navigator.share({files:[curFile],title:'Đếm ngược ngày lễ'})}catch(e){}});
 $('mdl').addEventListener('click',()=>{if(!curBlob)return;const a=document.createElement('a');a.href=URL.createObjectURL(curBlob);a.download=curFile.name;document.body.appendChild(a);a.click();a.remove()});
 $('mbg').addEventListener('click',()=>$('bgf').click());
@@ -253,6 +338,20 @@ const closeM=()=>{$('md').hidden=true};
 $('mcl').addEventListener('click',closeM);
 $('md').addEventListener('click',e=>{if(e.target.id==='md')closeM()});
 addEventListener('keydown',e=>{if(e.key==='Escape')closeM()});
+function moveThumb(){const p=document.querySelector('.tab[aria-pressed="true"]'),t=$('thumb');if(!p||!t)return;t.style.width=p.offsetWidth+'px';t.style.transform='translateX('+p.offsetLeft+'px)'}
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+let mode=store.get('hcp-mode'),sty=store.get('hcp-style');
+if(!['auto','light','dark'].includes(mode))mode='auto';if(!['classic','glass'].includes(sty))sty='classic';
+function applyUI(){const r=document.documentElement;mode==='auto'?r.removeAttribute('data-theme'):r.setAttribute('data-theme',mode);sty==='glass'?r.setAttribute('data-style','glass'):r.removeAttribute('data-style');
+  document.querySelectorAll('#smenu .seg').forEach(g=>g.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.v===(g.dataset.k==='mode'?mode:sty))));
+  requestAnimationFrame(moveThumb)}
+const sb=$('sbtn'),sm=$('smenu'),closeMenu=()=>{sm.hidden=true;sb.setAttribute('aria-expanded','false')};
+sb.addEventListener('click',e=>{e.stopPropagation();sm.hidden=!sm.hidden;sb.setAttribute('aria-expanded',String(!sm.hidden))});
+document.addEventListener('click',e=>{if(!sm.hidden&&!sm.contains(e.target))closeMenu()});
+addEventListener('keydown',e=>{if(e.key==='Escape')closeMenu()});
+sm.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;if(b.parentNode.dataset.k==='mode'){mode=b.dataset.v;store.set('hcp-mode',mode)}else{sty=b.dataset.v;store.set('hcp-style',sty)}applyUI()});
+addEventListener('resize',moveThumb);if(document.fonts)document.fonts.ready.then(moveThumb);
+applyUI();
 build(new Date());setInterval(tick,1000);
 document.addEventListener('visibilitychange',()=>{if(!document.hidden)tick()});
 })();
